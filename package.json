@@ -13,6 +13,7 @@
     "preact": "^10.4.7"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@logux/eslint-config": "^40.0.3",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
