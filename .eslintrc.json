@@ -27,6 +27,7 @@
     "const-immutable/no-mutation": 2,
     "prefer-rest-params": 2,
     "prefer-template": 2,
-    "prefer-spread": 2
+    "prefer-spread": 2,
+    "react/react-in-jsx-scope": 0
   }
 }
