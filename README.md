@@ -1,0 +1,2 @@
+# 11ty-preact-appstore-demo
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/954d5b89d2e64ecfb314b7f526c658ee)](https://app.codacy.com/manual/winston0410/11ty-preact-appstore-demo?utm_source=github.com&utm_medium=referral&utm_content=winston0410/11ty-preact-appstore-demo&utm_campaign=Badge_Grade_Dashboard)
