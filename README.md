@@ -6,7 +6,17 @@ This React(Preact) Appstore Demo is used for showcasing my knowledge in Frontend
 
 ## Tools used in this Repo
 
-TODO
+Static Site Generator: **11ty**
+
+Template engine: **Nunjucks**
+
+CSS processor: **PostCSS**
+
+Frontend framework: **React(Preact)**
+
+Bundler: **Rollup.js**
+
+Linter: **ESLint**
 
 ## Installation
 
