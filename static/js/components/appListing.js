@@ -1,7 +1,15 @@
 import { h, render, Component } from 'preact'
-import { useState } from 'preact/hooks'
+import { useState, useEffect } from 'preact/hooks'
 
-function AppListing (props) {
+const AppListing = (props) => {
+  useEffect(
+    async () => {
+      const apiUrl = 'https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/10/explicit.json'
+      return await fetch(apiUrl)
+        .then(response => response.json())
+    }
+  )
+
   return (
     <ul>
       <li>
