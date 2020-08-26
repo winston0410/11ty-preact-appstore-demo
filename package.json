@@ -4,7 +4,7 @@
   "description": "",
   "main": "rollup.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:js": "npx rollup -c"
   },
   "keywords": [],
   "author": "",
