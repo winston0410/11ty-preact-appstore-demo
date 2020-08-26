@@ -28,12 +28,9 @@ const AppListing = (props) => {
         R.join(',')
       )(response)
 
-      // const appDetails = R.pipeWith(
-      //   R.andThen, [
-      //     R.tap(console.log)
-      //   ]
-      // )(fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${appIdString}`))
+      const appDetails = await fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${appIdString}`)
 
+      console.log(appDetails)
       // const finalResponse = R.pipe(
       //
       // )
