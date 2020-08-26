@@ -14,16 +14,19 @@ const AppListing = (props) => {
       setApp(response)
 
       await console.log(response)
-    }
+    },
+    []
   )
+
+  // {
+  //   R.map(
+  //     (app) => <li>Hello</li>
+  //   )(app)
+  // }
 
   return (
     <ul>
-      {
-        R.map(
-          (app) => <li>Hello</li>
-        )(app)
-      }
+
     </ul>
   )
 }
