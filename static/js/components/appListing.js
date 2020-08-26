@@ -12,21 +12,28 @@ const AppListing = (props) => {
         .then(response => response.json())
 
       setApp(response)
-
-      await console.log(response)
     },
     []
   )
 
-  // {
-  //   R.map(
-  //     (app) => <li>Hello</li>
-  //   )(app)
-  // }
+  const renderResult = ({ name, url, genres }) => (
+    <li>
+      {name}
+    </li>
+  )
 
   return (
     <ul>
-
+      {
+        R.pipe(
+          R.prop('feed'),
+          R.prop('results'),
+          R.unless(
+            R.isNil,
+            R.map(renderResult)
+          )
+        )(app)
+      }
     </ul>
   )
 }
