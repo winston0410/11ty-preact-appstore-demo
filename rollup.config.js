@@ -31,10 +31,10 @@ export default [{
   plugins: [
     postcss({
       plugins: [
+        require('postcss-import')({}),
         require('postcss-preset-env')({
           stage: 3
         }),
-        require('postcss-import')({}),
         require('postcss-sort-media-queries')({
           sort: 'mobile-first'
         }),
