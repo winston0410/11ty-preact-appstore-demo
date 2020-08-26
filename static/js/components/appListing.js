@@ -8,9 +8,12 @@ const AppListing = (props) => {
   useEffect(
     async () => {
       const apiUrl = 'https://cors-anywhere.herokuapp.com/' + 'https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/10/explicit.json'
-      return await fetch(apiUrl)
+      const response = await fetch(apiUrl)
         .then(response => response.json())
-        .then(data => setApp(data))
+
+      setApp(response)
+
+      await console.log(response)
     }
   )
 
