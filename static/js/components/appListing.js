@@ -39,11 +39,12 @@ const AppListing = (props) => {
     []
   )
 
-  const renderResult = ({ name, url, genres, artistName, artistUrl }) => (
+  const renderResult = ({ trackCensoredName, trackViewUrl, genres, artistName, artistViewUrl, artworkUrl512, averageUserRating }) => (
     <li>
-      <a href={url}>{name}</a>
+      <img src={artworkUrl512} alt={trackCensoredName} loading="lazy" />
+      <a href={trackViewUrl}>{trackCensoredName}</a>
       <div>
-        <a href={artistUrl}>{artistName}</a>
+        <a href={artistViewUrl}>{artistName}</a>
       </div>
     </li>
   )
@@ -52,7 +53,6 @@ const AppListing = (props) => {
     <ul id="app-listing">
       {
         R.pipe(
-          accessResults,
           R.unless(
             R.isNil,
             R.map(renderResult)
