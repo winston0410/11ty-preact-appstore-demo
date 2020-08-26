@@ -1,6 +1,7 @@
 import { h, render, Component } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 import * as R from 'ramda'
+import './appListing.css'
 
 const AppListing = (props) => {
   const [app, setApp] = useState([])
@@ -26,7 +27,7 @@ const AppListing = (props) => {
   )
 
   return (
-    <ul>
+    <ul id="app-listing">
       {
         R.pipe(
           R.prop('feed'),
