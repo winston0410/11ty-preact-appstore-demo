@@ -1,4 +1,8 @@
+@import "normalize.css";
+
 #app-listing {
+  list-style: none;
+
   li:nth-of-type(odd) {
     img {
       border-radius: 20px;
@@ -9,5 +13,9 @@
     img {
       border-radius: 100px;
     }
+  }
+
+  img {
+    width: clamp(100px, 1.5vw, 200px);
   }
 }
