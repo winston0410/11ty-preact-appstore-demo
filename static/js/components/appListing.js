@@ -17,3 +17,5 @@ const AppListing = (props) => {
     </ul>
   )
 }
+
+export default AppListing
