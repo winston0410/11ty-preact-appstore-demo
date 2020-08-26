@@ -1,3 +1,4 @@
+import multiInput from 'rollup-plugin-multi-input'
 const {
   terser
 } = require('rollup-plugin-terser')
@@ -5,12 +6,11 @@ const {
   nodeResolve
 } = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
-// const peerDepsExternal = require('rollup-plugin-peer-deps-external')
 
 export default [{
-  input: './index.js',
+  input: './static/js/*.js',
   output: [{
-    file: 'dist/index.esm.js',
+    dir: 'dist',
     format: 'esm',
     plugins: [
       terser({
@@ -23,27 +23,12 @@ export default [{
         ecma: 2019
       })
     ]
-  },
-  {
-    file: 'dist/index.cjs.js',
-    format: 'cjs',
-    plugins: [
-      terser({
-        compress: {
-          drop_console: true
-        },
-        output: {
-          comments: false
-        },
-        ecma: 2019
-      })
-    ]
-  },
-],
+  }],
   plugins: [
     nodeResolve({}),
     commonjs({
       include: ['./src/**', 'node_modules/**']
-    })
+    }),
+    multiInput({ relative: './static/' })
   ]
 }]
