@@ -14,11 +14,17 @@ const AppListing = (props) => {
   useEffect(
     async () => {
       const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
+
       const response = await fetchRequest(apiUrl)
 
       setApp(response)
     },
     []
+  )
+
+  const accessResults = R.pipe(
+    R.prop('feed'),
+    R.prop('results')
   )
 
   const renderResult = ({ name, url, genres, artistName, artistUrl }) => (
@@ -34,9 +40,7 @@ const AppListing = (props) => {
     <ul id="app-listing">
       {
         R.pipe(
-          R.prop('feed'),
-          R.prop('results'),
-          R.tap(console.log),
+          accessResults,
           R.unless(
             R.isNil,
             R.map(renderResult)
