@@ -18,7 +18,7 @@ const AppListing = (props) => {
 
   const renderResult = ({ name, url, genres }) => (
     <li>
-      {name}
+      <a href={url}>{name}</a>
     </li>
   )
 
