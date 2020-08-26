@@ -1,6 +1,6 @@
 import { h, render, Component } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
-import { R } from 'ramda'
+import * as R from 'ramda'
 
 const AppListing = (props) => {
   const [app, setApp] = useState([])
@@ -16,8 +16,11 @@ const AppListing = (props) => {
 
   return (
     <ul>
-      <li>
-      </li>
+      {
+        R.map(
+          (app) => <li>Hello</li>
+        )(app)
+      }
     </ul>
   )
 }
