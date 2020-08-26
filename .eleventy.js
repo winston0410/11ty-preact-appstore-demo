@@ -2,8 +2,6 @@ const htmlmin = require("html-minifier");
 
 module.exports = (eleventyConfig) => {
 
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
-
   eleventyConfig.addPassthroughCopy({
     './static/font': 'font'
   });
