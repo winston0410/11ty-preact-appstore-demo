@@ -6,6 +6,9 @@ const {
   nodeResolve
 } = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
+const {
+  babel
+} = require('@rollup/plugin-babel')
 
 export default [{
   input: './static/js/*.js',
@@ -25,10 +28,16 @@ export default [{
     ]
   }],
   plugins: [
+    babel({
+      babelHelpers: 'runtime',
+      skipPreflightCheck: true
+    }),
     nodeResolve({}),
     commonjs({
       include: ['./src/**', 'node_modules/**']
     }),
-    multiInput({ relative: './static/' })
+    multiInput({
+      relative: './static/'
+    })
   ]
 }]
