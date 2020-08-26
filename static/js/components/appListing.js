@@ -2,16 +2,19 @@ import { h, render, Component } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 import * as R from 'ramda'
 import './appListing.css'
+import {
+  fetchRequest
+} from '../utilities/helper.js'
 
 const AppListing = (props) => {
   const [app, setApp] = useState([])
+
   const [listingNum, setListingNum] = useState(10)
 
   useEffect(
     async () => {
       const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
-      const response = await fetch(apiUrl)
-        .then(response => response.json())
+      const response = await fetchRequest(apiUrl)
 
       setApp(response)
     },
