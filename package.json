@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "preact": "^10.4.7"
   },
   "devDependencies": {
