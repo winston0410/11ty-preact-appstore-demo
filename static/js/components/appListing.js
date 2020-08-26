@@ -16,9 +16,12 @@ const AppListing = (props) => {
     []
   )
 
-  const renderResult = ({ name, url, genres }) => (
+  const renderResult = ({ name, url, genres, artistName, artistUrl }) => (
     <li>
       <a href={url}>{name}</a>
+      <div>
+        <a href={artistUrl}>{artistName}</a>
+      </div>
     </li>
   )
 
@@ -28,6 +31,7 @@ const AppListing = (props) => {
         R.pipe(
           R.prop('feed'),
           R.prop('results'),
+          R.tap(console.log),
           R.unless(
             R.isNil,
             R.map(renderResult)
