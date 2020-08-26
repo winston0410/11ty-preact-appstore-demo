@@ -30,12 +30,11 @@ const AppListing = (props) => {
 
       const appDetails = await fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${appIdString}`)
 
-      console.log(appDetails)
-      // const finalResponse = R.pipe(
-      //
-      // )
+      const finalResponse = R.prop('results')(appDetails)
 
-      setApp(response)
+      console.log(finalResponse)
+
+      setApp(finalResponse)
     },
     []
   )
