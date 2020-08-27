@@ -24,13 +24,13 @@ const AppListing = (props) => {
       const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
 
       const addToDB = async (v) => {
-        await appDB.add('applist', v, 'applist-data')
-        await appDB.add('applist', Date.now(), 'timestamp')
-        await appDB.add('applist', listingNum, 'page-number')
+        await appDB.put('applist', v, 'applist-data')
+        await appDB.put('applist', Date.now(), 'timestamp')
+        await appDB.put('applist', listingNum, 'page-number')
         return v
       }
 
-      const lastFetchTimestamp = R.defaultTo(0)(await appDB.get('applist', 'timestamp'))
+      const lastFetchTimestamp = R.defaultTo(0)(appDB.get('applist', 'timestamp'))
 
       const shouldGetNewData = (timestamp) => (appData) => R.anyPass(
         [
