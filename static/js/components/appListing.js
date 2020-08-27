@@ -19,7 +19,7 @@ const AppListing = (props) => {
 
   useEffect(
     async () => {
-      const appDB = openDB('app', 1, {
+      const appDB = await openDB('app', 1, {
         upgrade (db) {
           db.createObjectStore('applist')
         }
@@ -27,7 +27,14 @@ const AppListing = (props) => {
 
       const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
 
-      const response = await fetchRequest(apiUrl)
+      let response
+
+      if (R.isNil(await appDB.get('applist', 'applist-data'))) {
+        response = await fetchRequest(apiUrl)
+        await appDB.add('applist', response, 'applist-data')
+      } else {
+        response = await appDB.get('applist', 'applist-data')
+      }
 
       const appIdString = await R.pipe(
         accessResults,
