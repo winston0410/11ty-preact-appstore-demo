@@ -32,6 +32,8 @@ const AppListing = (props) => {
       if (R.isNil(await appDB.get('applist', 'applist-data'))) {
         response = await fetchRequest(apiUrl)
         await appDB.add('applist', response, 'applist-data')
+        await appDB.add('applist', Date.now(), 'timestamp')
+        await appDB.add('applist', listingNum, 'page-number')
       } else {
         response = await appDB.get('applist', 'applist-data')
       }
