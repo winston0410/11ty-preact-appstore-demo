@@ -1,27 +1,29 @@
 #app-recommendation {
-  list-style: none;
-  display: flex;
-  flex-wrap: nowrap;
-  margin: 0;
-  padding: 0;
-  overflow-x: scroll;
-  scroll-snap-type: x proximity;
-
-  li {
-    scroll-snap-align: end;
+  ul {
+    list-style: none;
     display: flex;
-    flex: 0 0 100%;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
 
-    h3 {
-      margin: 0 0 15px;
-    }
+    li {
+      scroll-snap-align: end;
+      display: flex;
+      flex: 0 0 100%;
+      justify-content: center;
+      align-items: center;
 
-    img {
-      border-radius: 20px;
-      width: clamp(100px, 1.5vw, 400px);
-      margin-right: 10px;
+      h3 {
+        margin: 0 0 15px;
+      }
+
+      img {
+        border-radius: 20px;
+        width: clamp(100px, 1.5vw, 400px);
+        margin-right: 10px;
+      }
     }
   }
 }

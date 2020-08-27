@@ -61,14 +61,17 @@ const AppRecommendation = (props) => {
   )
 
   return (
-    <ul id="app-recommendation" itemScope itemType="http://schema.org/ItemList">
-      {
-        R.pipe(
-          accessResults,
-          checkIfDataReady(renderResult)
-        )(app)
-      }
-    </ul>
+    <section id="app-recommendation">
+      <h2>推介</h2>
+      <ul itemScope itemType="http://schema.org/ItemList">
+        {
+          R.pipe(
+            accessResults,
+            checkIfDataReady(renderResult)
+          )(app)
+        }
+      </ul>
+    </section>
   )
 }
 
