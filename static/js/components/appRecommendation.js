@@ -53,7 +53,10 @@ const AppRecommendation = (props) => {
   return (
     <ul id="app-recommendation" itemScope itemType="http://schema.org/ItemList">
       {
-        checkIfDataReady(renderResult)(app)
+        R.pipe(
+          accessResults,
+          checkIfDataReady(renderResult)
+        )(app)
       }
     </ul>
   )
