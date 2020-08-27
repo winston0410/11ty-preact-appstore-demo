@@ -7,7 +7,7 @@ $highlightColorTint: #CAD49D;
   display: block;
   z-index: 2;
   position: sticky;
-  top: 10px;
+  top: 0px;
   background: $bgColor;
 
   ul {

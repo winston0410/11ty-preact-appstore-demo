@@ -25,10 +25,10 @@ a:hover {
 
 main section {
   margin-bottom: 30px;
-  padding: 0px 15px;
+  padding: 30px 15px 0px;
 
   h2 {
     font-size: clamp(40.45px, 1.5vw, 64px);
-    margin-top: 0px;
+    margin: 0;
   }
 }
