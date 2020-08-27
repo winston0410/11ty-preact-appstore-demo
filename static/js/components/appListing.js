@@ -35,12 +35,16 @@ const AppListing = (props) => {
         return v
       }
 
-      // const shouldGetNewData = R.anyPass(
-      //   [R.isNil, ]
-      // )
+      const shouldGetNewData = R.anyPass(
+        [
+          R.isNil,
+          () => hasPassedADay(appDB.add('applist', Date.now(), 'timestamp'))
+          // Also test if page number is greater than the current number
+        ]
+      )
 
       const response = await R.when(
-        R.isNil,
+        shouldGetNewData,
         R.pipe(
           R.pipeWith(R.andThen, [
             () => fetchRequest(apiUrl),
