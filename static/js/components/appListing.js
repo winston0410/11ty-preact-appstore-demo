@@ -19,6 +19,12 @@ const AppListing = (props) => {
 
   useEffect(
     async () => {
+      const appDB = openDB('app', 1, {
+        upgrade (db) {
+          db.createObjectStore('applist')
+        }
+      })
+
       const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
 
       const response = await fetchRequest(apiUrl)
@@ -37,8 +43,12 @@ const AppListing = (props) => {
 
       setApp(finalResponse)
     },
-    []
+    [listingNum]
   )
+
+  const checkScrollPosition = () => {
+
+  }
 
   const renderGenres = (genre) => (
     <li>
