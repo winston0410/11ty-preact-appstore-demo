@@ -1,3 +1,6 @@
+$heading-color: #000;
+$genre-color: #777;
+
 #app-listing {
   list-style: none;
   margin: 0;
@@ -29,12 +32,14 @@
 
     li {
       margin-right: 10px;
+      color: $genre-color;
     }
   }
 
   h2 {
     font-size: clamp(25px, 1.5vw, 40px);
     margin: 0;
+    color: $heading-color;
   }
 
   img {
