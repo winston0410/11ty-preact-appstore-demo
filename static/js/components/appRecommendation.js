@@ -32,7 +32,9 @@ const AppRecommendation = (props) => {
   )
 
   return (
-    <p>This is app recommendation</p>
+    <ul id="app-recommendation" itemScope itemType="http://schema.org/ItemList">
+
+    </ul>
   )
 }
 
