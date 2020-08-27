@@ -33,3 +33,11 @@ Build static files and start development serve:
 ```bash
 npx eleventy --serve
 ```
+
+## Features
+
+### PWA ready
+
+This application has been pre-cached, thus it can be downloaded and view offline.
+
+### Storing remote data locally to avoid unnecessary data request.
