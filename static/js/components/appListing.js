@@ -9,7 +9,8 @@ import {
   checkIfDataReady,
   setUpDB,
   shouldSendRequest,
-  debounce_
+  debounce_,
+  hasScrolledHalfPage
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import GenreList from './genreList.js'
@@ -59,9 +60,8 @@ const AppListing = (props) => {
   useEffect(
     () => {
       window.addEventListener(
-        'scroll', () => debounce_(false, 150, (event) => {
-            console.log('Scrollbar running')
-          }
+        'scroll', () => debounce_(false, 500, (event) => {
+          console.log('Scrollbar running')
         })()()
       )
     },
