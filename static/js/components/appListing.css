@@ -25,17 +25,6 @@ $genre-color: #777;
     }
   }
 
-  .genre-list {
-    margin: 0;
-    padding: 0;
-    display: flex;
-
-    li {
-      margin-right: 10px;
-      color: $genre-color;
-    }
-  }
-
   h2 {
     font-size: clamp(25px, 1.5vw, 40px);
     color: $heading-color;

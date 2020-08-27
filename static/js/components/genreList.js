@@ -8,6 +8,7 @@ import {
   checkIfDataReady,
   renderGenreList
 } from '../utilities/helper.js'
+import './genreList.css'
 
 const GenreList = ({ data }) => {
   return (
