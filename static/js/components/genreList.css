@@ -1,4 +1,4 @@
-$genre-color: #777;
+$fontColorShade: #EBEBEB;
 
 .genre-list {
   margin: 0;
@@ -7,6 +7,6 @@ $genre-color: #777;
 
   li {
     margin-right: 10px;
-    color: $genre-color;
+    color: $fontColorShade;
   }
 }

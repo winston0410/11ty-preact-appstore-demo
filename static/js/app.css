@@ -3,6 +3,7 @@ $bgColor: #161612;
 $fontColor: #F5F5F5;
 $highlightColor: #99AA4B;
 $highlightColorTint: #CAD49D;
+$fontColorShade: #EBEBEB;
 
 body {
   padding: 0 10%;
