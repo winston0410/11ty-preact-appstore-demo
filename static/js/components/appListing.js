@@ -17,7 +17,6 @@ import GenreList from './genreList.js'
 const AppListing = (props) => {
   const [app, setApp] = useState([])
   const [paginationNum, setPaginationNum] = useState(10)
-  const [updateFlag, setUpdateFlag] = useState(false)
 
   useEffect(
     async () => {
@@ -61,14 +60,12 @@ const AppListing = (props) => {
     () => {
       window.addEventListener(
         'scroll', () => debounce_(false, 150, (event) => {
-          if (updateFlag === false) {
-            setUpdateFlag(true)
             console.log('Scrollbar running')
           }
         })()()
       )
     },
-    [updateFlag]
+    []
   )
 
   // const checkScrollPosition = () => {
