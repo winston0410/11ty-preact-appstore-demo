@@ -3,7 +3,8 @@ import { useState, useEffect } from 'preact/hooks'
 import * as R from 'ramda'
 import './appListing.css'
 import {
-  fetchRequest
+  fetchRequest,
+  hasPassedADay
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
