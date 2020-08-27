@@ -1,6 +1,32 @@
 import * as R from 'ramda'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
+// Credit: https://gist.github.com/tommmyy/daf61103d6022cd23d74c71b0e8adc0d
+const debounce_ = R.curry((immediate, timeMs, fn) => () => {
+  let timeout
+
+  return (...args) => {
+    const later = () => {
+      timeout = null
+
+      if (!immediate) {
+        R.apply(fn, args)
+      }
+    }
+
+    const callNow = immediate && !timeout
+
+    clearTimeout(timeout)
+    timeout = setTimeout(later, timeMs)
+
+    if (callNow) {
+      R.apply(fn, args)
+    }
+
+    return timeout
+  }
+})
+
 const fetchRequest = (apiUrl) => fetch(apiUrl)
   .then(response => response.json())
 
@@ -46,5 +72,6 @@ export {
   accessResults,
   checkIfDataReady,
   setUpDB,
-  shouldSendRequest
+  shouldSendRequest,
+  debounce_
 }

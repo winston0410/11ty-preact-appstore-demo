@@ -43,10 +43,8 @@ const AppListing = (props) => {
       const requestCallback = R.pipe(
         R.pipeWith(R.andThen, [
           async () => await fetchRequest(apiUrl),
-          R.tap(console.log),
           getAppIdString,
           async (id) => await fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${id}`),
-          R.tap(console.log),
           R.prop('results'),
           addToDB
         ])
