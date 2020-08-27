@@ -6,8 +6,9 @@ $genre-color: #777;
   margin: 0 0 30px;
   padding: 0;
   display: grid;
-  grid-row-gap: 10px;
+  grid-row-gap: 20px;
   padding: 0px 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   li {
     display: flex;
@@ -24,12 +25,20 @@ $genre-color: #777;
         border-radius: 100px;
       }
     }
+
+    .app-info {
+      margin-left: 10px;
+    }
   }
 
   h3 {
     font-size: clamp(25px, 1.5vw, 40px);
     color: $heading-color;
     margin: 0 0 10px;
+
+    a {
+      color: inherit;
+    }
   }
 
   img {
