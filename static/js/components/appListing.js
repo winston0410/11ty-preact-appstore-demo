@@ -50,7 +50,7 @@ const AppListing = (props) => {
         ])
       )
 
-      const response = shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
+      const response = await shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
 
       setApp(response)
     },
