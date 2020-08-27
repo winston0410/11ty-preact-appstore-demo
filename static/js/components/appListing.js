@@ -67,6 +67,12 @@ const AppListing = (props) => {
     [listingNum]
   )
 
+  const addTen = R.add(10)
+
+  const newListingNum = addTen(listingNum)
+
+  setListingNum(newListingNum)
+
   const checkScrollPosition = () => {
 
   }
