@@ -1,6 +1,6 @@
 import { h, render, Component } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
-import './appListing.css'
+import './appRecommendation.css'
 import * as R from 'ramda'
 import {
   fetchRequest,
