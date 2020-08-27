@@ -48,3 +48,13 @@ $highlightColorTint: #CAD49D;
     }
   }
 }
+
+@media(width >=1280px) {
+  #app-recommendation {
+    ul {
+      li {
+        flex: 0 0 50%;
+      }
+    }
+  }
+}
