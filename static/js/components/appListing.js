@@ -98,11 +98,14 @@ const AppListing = (props) => {
   )
 
   return (
-    <ul id="app-listing" itemScope itemType="http://schema.org/ItemList">
-      {
-        checkIfDataReady(renderResult)(app)
-      }
-    </ul>
+    <section id="app-listing">
+      <h2>下載排行榜</h2>
+      <ul itemScope itemType="http://schema.org/ItemList">
+        {
+          checkIfDataReady(renderResult)(app)
+        }
+      </ul>
+    </section>
   )
 }
 

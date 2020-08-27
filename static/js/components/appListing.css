@@ -4,51 +4,52 @@ $highlightColor: #99AA4B;
 $highlightColorTint: #CAD49D;
 
 #app-listing {
-  list-style: none;
-  margin: 0 0 30px;
-  padding: 0;
-  display: grid;
-  grid-row-gap: 20px;
-  padding: 0px 15px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  &>ul {
+    list-style: none;
+    margin: 0 0 30px;
+    padding: 0;
+    display: grid;
+    grid-row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-  li {
-    display: flex;
-    align-items: center;
+    li {
+      display: flex;
+      align-items: end;
 
-    &:nth-of-type(odd) {
-      img {
-        border-radius: 20px;
+      &:nth-of-type(odd) {
+        img {
+          border-radius: 20px;
+        }
+      }
+
+      &:nth-of-type(even) {
+        img {
+          border-radius: 100px;
+        }
+      }
+
+      .app-info {
+        margin-left: 10px;
       }
     }
 
-    &:nth-of-type(even) {
-      img {
-        border-radius: 100px;
+    h3 {
+      font-size: clamp(25px, 1.5vw, 40px);
+      color: $fontColor;
+      margin: 0 0 10px;
+
+      &:hover {
+        color: $highlightColor;
+      }
+
+      a {
+        color: inherit;
       }
     }
 
-    .app-info {
-      margin-left: 10px;
+    img {
+      width: clamp(50px, 1.5vw, 200px);
+      margin-right: 10px;
     }
-  }
-
-  h3 {
-    font-size: clamp(25px, 1.5vw, 40px);
-    color: $fontColor;
-    margin: 0 0 10px;
-
-    &:hover {
-      color: $highlightColor;
-    }
-
-    a {
-      color: inherit;
-    }
-  }
-
-  img {
-    width: clamp(50px, 1.5vw, 200px);
-    margin-right: 10px;
   }
 }

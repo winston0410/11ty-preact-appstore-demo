@@ -1,3 +1,8 @@
+$bgColor: #161612;
+$fontColor: #F5F5F5;
+$highlightColor: #99AA4B;
+$highlightColorTint: #CAD49D;
+
 #app-recommendation {
   ul {
     list-style: none;
@@ -16,7 +21,17 @@
       align-items: center;
 
       h3 {
+        font-size: clamp(25px, 1.5vw, 40px);
+        color: $fontColor;
         margin: 0 0 15px;
+
+        &:hover {
+          color: $highlightColor;
+        }
+
+        a {
+          color: inherit;
+        }
       }
 
       img {

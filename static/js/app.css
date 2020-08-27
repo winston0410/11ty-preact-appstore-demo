@@ -7,6 +7,7 @@ $fontColorShade: #EBEBEB;
 
 body {
   background: $bgColor;
+  font-family: sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p, span {
@@ -20,4 +21,13 @@ a {
 
 a:hover {
   color: $highlightColorTint
+}
+
+main section {
+  margin-bottom: 30px;
+  padding: 0px 15px;
+
+  h2 {
+    font-size: clamp(40.45px, 1.5vw, 64px);
+  }
 }
