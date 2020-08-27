@@ -6,10 +6,10 @@ import {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady,
-  renderGenreList
+  checkIfDataReady
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
+import GenreList from './genreList.js'
 
 const AppListing = (props) => {
   const [app, setApp] = useState([])
@@ -35,21 +35,23 @@ const AppListing = (props) => {
 
       const shouldGetNewData = R.anyPass(
         [
-          R.isNil,
-          () => hasPassedADay(appDB.add('applist', Date.now(), 'timestamp'))
+          R.isNil
+          // () => hasPassedADay(appDB.add('applist', Date.now(), 'timestamp'))
           // Also test if page number is greater than the current number
         ]
       )
 
-      const response = await R.when(
-        shouldGetNewData,
-        R.pipe(
-          R.pipeWith(R.andThen, [
-            () => fetchRequest(apiUrl),
-            addToDB
-          ])
-        )
-      )(await appDB.get('applist', 'applist-data'))
+      // const response = await R.when(
+      //   shouldGetNewData,
+      //   R.pipe(
+      //     R.pipeWith(R.andThen, [
+      //       () => fetchRequest(apiUrl),
+      //       addToDB
+      //     ])
+      //   )
+      // )(await appDB.get('applist', 'applist-data'))
+
+      const response = await fetchRequest(apiUrl)
 
       const appIdString = await R.pipe(
         accessResults,
@@ -85,9 +87,7 @@ const AppListing = (props) => {
         <h2>
           <a href={trackViewUrl}>{trackCensoredName}</a>
         </h2>
-        {
-          renderGenreList(genres)
-        }
+        <GenreList data={genres}/>
         <div>
           <a href={artistViewUrl} itemProp="name">{artistName}</a>
         </div>

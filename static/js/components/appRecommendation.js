@@ -6,10 +6,10 @@ import {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady,
-  renderGenreList
+  checkIfDataReady
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
+import GenreList from './genreList.js'
 
 const AppRecommendation = (props) => {
   const [app, setApp] = useState([])
@@ -42,9 +42,7 @@ const AppRecommendation = (props) => {
         <h2>
           <a href={url}>{name}</a>
         </h2>
-        {
-          renderGenreList(genres)
-        }
+        <GenreList data={genres}/>
         <div>
           <a href={artistUrl} itemProp="name">{artistName}</a>
         </div>

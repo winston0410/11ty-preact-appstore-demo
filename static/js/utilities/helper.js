@@ -21,22 +21,9 @@ const checkIfDataReady = (fn) => (app) => R.pipe(
   )
 )(app)
 
-const renderGenres = (genre) => (
-  <li>
-    {genre}
-  </li>
-)
-
-const renderGenreList = (genres) => (<ul className="genre-list">
-  {
-    R.map(renderGenres)(genres)
-  }
-</ul>)
-
 export {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady,
-  renderGenreList
+  checkIfDataReady
 }
