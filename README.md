@@ -20,4 +20,16 @@ Linter: **ESLint**
 
 ## Installation
 
-TODO
+To run this application, you need to run the following command:
+
+Bundle scripts and css with Rollup.js:
+
+```bash
+npm run build:js
+```
+
+Build static files and start development serve:
+
+```bash
+npx eleventy --serve
+```

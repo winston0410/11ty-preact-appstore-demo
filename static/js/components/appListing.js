@@ -35,6 +35,20 @@ const AppListing = (props) => {
       } else {
         response = await appDB.get('applist', 'applist-data')
       }
+      //
+      // const response = await R.ifElse(
+      //   R.isNil,
+      //   R.pipeWith(R.andThen, [
+      //     dbGet,
+      //     fetchRequest(apiUrl)
+      //   ]
+      //   ),
+      //   R.pipe(
+      //     () => console.log('Not found')
+      //   )
+      // )(await appDB.get('applist', 'applist-data'))
+      //
+      // console.log(response)
 
       const appIdString = await R.pipe(
         accessResults,
