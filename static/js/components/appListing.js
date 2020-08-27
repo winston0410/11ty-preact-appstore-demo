@@ -44,12 +44,14 @@ const AppListing = (props) => {
       <a href={trackViewUrl}>
         <img src={artworkUrl512} alt={trackCensoredName} loading="lazy" />
       </a>
-      <h2>
-        <a href={trackViewUrl}>{trackCensoredName}</a>
-      </h2>
-      <div>
-        <a href={artistViewUrl}>{artistName}</a>
-      </div>
+      <section className="app-info">
+        <h2>
+          <a href={trackViewUrl}>{trackCensoredName}</a>
+        </h2>
+        <div>
+          <a href={artistViewUrl}>{artistName}</a>
+        </div>
+      </section>
     </li>
   )
 

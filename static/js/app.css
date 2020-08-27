@@ -1,0 +1,9 @@
+@import "normalize.css";
+
+body {
+  padding: 0 10%;
+}
+
+a {
+  text-decoration: none;
+}
