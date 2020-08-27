@@ -1,4 +1,4 @@
-$bgColor: #161612;
+$bgColor: #0B0B09;
 $fontColor: #F5F5F5;
 $highlightColor: #99AA4B;
 $highlightColorTint: #CAD49D;
@@ -9,6 +9,7 @@ $highlightColorTint: #CAD49D;
   position: sticky;
   top: 0px;
   background: $bgColor;
+  box-shadow: 0px 10px 15px 0px rgba(11, 11, 9, 0.5);
 
   ul {
     list-style: none;
