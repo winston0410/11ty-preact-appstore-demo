@@ -41,7 +41,9 @@ const AppListing = (props) => {
 
   const renderResult = ({ trackCensoredName, trackViewUrl, genres, artistName, artistViewUrl, artworkUrl512, averageUserRating }) => (
     <li>
-      <img src={artworkUrl512} alt={trackCensoredName} loading="lazy" />
+      <a href={trackViewUrl}>
+        <img src={artworkUrl512} alt={trackCensoredName} loading="lazy" />
+      </a>
       <a href={trackViewUrl}>{trackCensoredName}</a>
       <div>
         <a href={artistViewUrl}>{artistName}</a>
