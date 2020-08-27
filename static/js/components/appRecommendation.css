@@ -4,6 +4,12 @@ $highlightColor: #99AA4B;
 $highlightColorTint: #CAD49D;
 
 #app-recommendation {
+  display: block;
+  z-index: 2;
+  position: sticky;
+  top: 10px;
+  background: $bgColor;
+
   ul {
     list-style: none;
     display: flex;
