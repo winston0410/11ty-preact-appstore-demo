@@ -16,19 +16,18 @@ import GenreList from './genreList.js'
 
 const AppListing = (props) => {
   const [app, setApp] = useState([])
-  const [listingNum, setListingNum] = useState(10)
+  const [paginationNum, setPaginationNum] = useState(10)
   const [updateFlag, setUpdateFlag] = useState(false)
 
   useEffect(
     async () => {
       const appDB = setUpDB()
 
-      const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
+      const apiUrl = 'https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/100/explicit.json'
 
       const addToDB = async (v) => {
         await (await appDB).put('applist', v, 'applist-data')
         await (await appDB).put('applist', Date.now(), 'timestamp')
-        await (await appDB).put('applist', listingNum, 'page-number')
         return v
       }
 
@@ -55,7 +54,7 @@ const AppListing = (props) => {
 
       await setApp(response)
     },
-    [listingNum]
+    [paginationNum]
   )
 
   useEffect(
