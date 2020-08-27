@@ -29,7 +29,7 @@ const AppRecommendation = (props) => {
       }
 
       const lastFetchTimestamp = R.defaultTo(0)(await (await appDB).get('app-recommendation', 'timestamp'))
-      const previousAppData = await (await appDB).get('app-recommendation', 'applist-data')
+      const previousAppData = await (await appDB).get('app-recommendation', 'app-recommendation-data')
 
       const callback = R.pipeWith(R.andThen, [
         () => fetchRequest(apiUrl),
