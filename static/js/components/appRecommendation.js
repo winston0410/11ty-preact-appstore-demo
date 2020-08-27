@@ -21,7 +21,24 @@ const AppRecommendation = (props) => {
 
       const apiUrl = 'https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-grossing/all/10/explicit.json'
 
-      const response = await fetchRequest(apiUrl)
+      const addToDB = async (v) => {
+        await (await appDB).put('app-recommendation', v, 'app-recommendation-data')
+        await (await appDB).put('app-recommendation', Date.now(), 'timestamp')
+        return v
+      }
+
+      const lastFetchTimestamp = R.defaultTo(0)(await (await appDB).get('app-recommendation', 'timestamp'))
+      const previousAppData = await (await appDB).get('app-recommendation', 'applist-data')
+
+      const response = R.when(
+        R.isNil,
+        R.pipe(
+          R.pipeWith(R.andThen, [
+            () => fetchRequest(apiUrl),
+            addToDB
+          ])
+        )
+      )(previousAppData)
 
       console.log(response)
 

@@ -43,8 +43,8 @@ const AppListing = (props) => {
         ]
       )(appData)
 
-      const response = await R.when(
-        shouldGetNewData(lastFetchTimestamp),
+      const response = R.when(
+        R.isNil,
         R.pipe(
           R.pipeWith(R.andThen, [
             () => fetchRequest(apiUrl),
@@ -53,7 +53,7 @@ const AppListing = (props) => {
         )
       )(previousAppData)
 
-      const appIdString = await R.pipe(
+      const appIdString = R.pipe(
         accessResults,
         R.pluck('id'),
         R.join(',')
