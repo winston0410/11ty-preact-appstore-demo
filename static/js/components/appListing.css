@@ -23,7 +23,13 @@
   }
 
   .genre-list {
+    margin: 0;
+    padding: 0;
     display: flex;
+
+    li {
+      margin-right: 10px;
+    }
   }
 
   h2 {
