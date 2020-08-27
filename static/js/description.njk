@@ -1,0 +1,90 @@
+<style>
+  {% postcss %}
+  .intropage-info {
+
+    h1 {
+      color: #202d58;
+      font-size: 30px;
+      letter-spacing: 1.5px;
+      font-family: "PingFangTC-Semibold";
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    p {
+      color: #535353;
+      font-size: 14px;
+      font-family: "PingFangHK-B5pc-H";
+      line-height: 2;
+      padding-left: 1.25rem;
+    }
+
+    .description-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+  }
+
+  @media (width >= 1280px) {
+    .intropage-info {
+
+      padding: 0 220px;
+      position: relative;
+
+      h1 {
+        font-size: 32px;
+        position: absolute;
+        left: 50%;
+        top: 10%;
+        transform: translate(-20%, -50%);
+      }
+
+      p {
+        font-size: 20px;
+        color: #707070;
+        padding: 0;
+      }
+
+      .description-wrapper{
+        display: flex;
+        flex-direction: row-reverse;
+
+        & img{
+          margin-right: 10px;
+        }
+
+        &>p{
+          margin-top: -20%;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  {% endpostcss %}
+</style>
+
+{% set decorImage = [{
+  alt: '',
+  src: '/images/intro-man',
+  type: 'webp'
+},
+{
+  alt: '',
+  src: '/images/intro-man',
+  type: 'png'
+}] %}
+
+<section class="intropage-info">
+  <h1>
+    {{ title }}
+  </h1>
+
+  <div class="description-wrapper">
+    <p>
+      {{ intropages.info[intropageName].description }}
+    </p>
+
+    {{ general.picture( decorImage ) }}
+  </div>
+</section>
