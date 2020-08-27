@@ -5,7 +5,8 @@ import * as R from 'ramda'
 import {
   fetchRequest,
   hasPassedADay,
-  accessResults
+  accessResults,
+  checkIfDataReady
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 

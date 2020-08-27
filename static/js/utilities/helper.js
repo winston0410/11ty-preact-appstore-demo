@@ -14,8 +14,16 @@ const accessResults = R.pipe(
   R.prop('results')
 )
 
+const checkIfDataReady = (fn) => (app) => R.pipe(
+  R.unless(
+    R.isNil,
+    R.map(fn)
+  )
+)(app)
+
 export {
   fetchRequest,
   hasPassedADay,
-  accessResults
+  accessResults,
+  checkIfDataReady
 }
