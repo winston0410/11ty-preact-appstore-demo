@@ -37,7 +37,7 @@ const shouldSendRequest = (timestamp) => (callback) => (appData) => R.when(
       // Also test if page number is greater than the current number
     ]
   ),
-  callback(appData)
+  callback
 )(appData)
 
 export {
