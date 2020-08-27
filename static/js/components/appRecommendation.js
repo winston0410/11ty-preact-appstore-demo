@@ -7,7 +7,8 @@ import {
   hasPassedADay,
   accessResults,
   checkIfDataReady,
-  setUpDB
+  setUpDB,
+  shouldSendRequest
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import GenreList from './genreList.js'
@@ -30,17 +31,12 @@ const AppRecommendation = (props) => {
       const lastFetchTimestamp = R.defaultTo(0)(await (await appDB).get('app-recommendation', 'timestamp'))
       const previousAppData = await (await appDB).get('app-recommendation', 'applist-data')
 
-      const response = R.when(
-        R.isNil,
-        R.pipe(
-          R.pipeWith(R.andThen, [
-            () => fetchRequest(apiUrl),
-            addToDB
-          ])
-        )
-      )(previousAppData)
+      const callback = R.pipeWith(R.andThen, [
+        () => fetchRequest(apiUrl),
+        addToDB
+      ])
 
-      console.log(response)
+      const response = await shouldSendRequest(lastFetchTimestamp)(callback)(previousAppData)
 
       setApp(response)
     },

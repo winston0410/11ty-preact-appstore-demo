@@ -42,9 +42,11 @@ const AppListing = (props) => {
 
       const requestCallback = R.pipe(
         R.pipeWith(R.andThen, [
-          () => fetchRequest(apiUrl),
+          async () => await fetchRequest(apiUrl),
+          R.tap(console.log),
           getAppIdString,
-          (id) => fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${id}`),
+          async (id) => await fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${id}`),
+          R.tap(console.log),
           R.prop('results'),
           addToDB
         ])
@@ -52,7 +54,7 @@ const AppListing = (props) => {
 
       const response = await shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
 
-      setApp(response)
+      await setApp(response)
     },
     [listingNum]
   )
