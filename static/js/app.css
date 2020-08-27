@@ -29,5 +29,6 @@ main section {
 
   h2 {
     font-size: clamp(40.45px, 1.5vw, 64px);
+    margin-top: 0px;
   }
 }
