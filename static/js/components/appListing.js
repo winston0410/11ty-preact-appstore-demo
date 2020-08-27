@@ -7,7 +7,8 @@ import {
   hasPassedADay,
   accessResults,
   checkIfDataReady,
-  setUpDB
+  setUpDB,
+  shouldSendRequest
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import GenreList from './genreList.js'
@@ -33,25 +34,14 @@ const AppListing = (props) => {
       const lastFetchTimestamp = R.defaultTo(0)(await (await appDB).get('applist', 'timestamp'))
       const previousAppData = await (await appDB).get('applist', 'applist-data')
 
-      console.log(previousAppData)
+      const requestCallback = R.pipe(
+        R.pipeWith(R.andThen, [
+          () => fetchRequest(apiUrl),
+          addToDB
+        ])
+      )
 
-      const shouldGetNewData = (timestamp) => (appData) => R.anyPass(
-        [
-          R.isNil,
-          hasPassedADay(lastFetchTimestamp)
-          // Also test if page number is greater than the current number
-        ]
-      )(appData)
-
-      const response = R.when(
-        R.isNil,
-        R.pipe(
-          R.pipeWith(R.andThen, [
-            () => fetchRequest(apiUrl),
-            addToDB
-          ])
-        )
-      )(previousAppData)
+      const response = shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
 
       const appIdString = R.pipe(
         accessResults,

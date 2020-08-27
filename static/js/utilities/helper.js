@@ -29,10 +29,22 @@ const setUpDB = async () => await openDB('app', 1, {
   }
 })
 
+const shouldSendRequest = (timestamp) => (callback) => (appData) => R.when(
+  (data) => R.anyPass(
+    [
+      R.isNil,
+      () => hasPassedADay(timestamp)
+      // Also test if page number is greater than the current number
+    ]
+  )(data),
+  callback(appData)
+)(appData)
+
 export {
   fetchRequest,
   hasPassedADay,
   accessResults,
   checkIfDataReady,
-  setUpDB
+  setUpDB,
+  shouldSendRequest
 }
