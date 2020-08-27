@@ -6,7 +6,8 @@ import {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady
+  checkIfDataReady,
+  renderGenreList
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
@@ -75,12 +76,6 @@ const AppListing = (props) => {
   //   setListingNum(newListingNum)
   // }
 
-  const renderGenres = (genre) => (
-    <li>
-      {genre}
-    </li>
-  )
-
   const renderResult = ({ trackCensoredName, trackViewUrl, genres, artistName, artistViewUrl, artworkUrl512, averageUserRating }) => (
     <li itemProp="itemListElement" itemScope itemType="http://schema.org/MobileApplication">
       <a href={trackViewUrl}>
@@ -90,11 +85,9 @@ const AppListing = (props) => {
         <h2>
           <a href={trackViewUrl}>{trackCensoredName}</a>
         </h2>
-        <ul className="genre-list">
-          {
-            R.map(renderGenres)(genres)
-          }
-        </ul>
+        {
+          renderGenreList(genres)
+        }
         <div>
           <a href={artistViewUrl} itemProp="name">{artistName}</a>
         </div>
