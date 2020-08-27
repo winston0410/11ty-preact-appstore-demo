@@ -34,6 +34,10 @@ const AppListing = (props) => {
         return v
       }
 
+      // const shouldGetNewData = R.anyPass(
+      //   [R.isNil, ]
+      // )
+
       const response = await R.when(
         R.isNil,
         R.pipe(
