@@ -32,6 +32,7 @@ export default [{
     postcss({
       plugins: [
         require('postcss-import')({}),
+        require('postcss-simple-vars'),
         require('postcss-preset-env')({
           stage: 3
         }),
