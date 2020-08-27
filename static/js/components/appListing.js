@@ -5,6 +5,7 @@ import './appListing.css'
 import {
   fetchRequest
 } from '../utilities/helper.js'
+import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
 const AppListing = (props) => {
   const [app, setApp] = useState([])
@@ -46,9 +47,9 @@ const AppListing = (props) => {
   )
 
   const renderResult = ({ trackCensoredName, trackViewUrl, genres, artistName, artistViewUrl, artworkUrl512, averageUserRating }) => (
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/MobileApplication">
+    <li itemProp="itemListElement" itemScope itemType="http://schema.org/MobileApplication">
       <a href={trackViewUrl}>
-        <img itemprop="image" src={artworkUrl512} alt={trackCensoredName} loading="lazy" />
+        <img itemProp="image" src={artworkUrl512} alt={trackCensoredName} loading="lazy" />
       </a>
       <section className="app-info">
         <h2>
@@ -60,14 +61,14 @@ const AppListing = (props) => {
           }
         </ul>
         <div>
-          <a href={artistViewUrl} itemprop="name">{artistName}</a>
+          <a href={artistViewUrl} itemProp="name">{artistName}</a>
         </div>
       </section>
     </li>
   )
 
   return (
-    <ul id="app-listing" itemscope itemtype="http://schema.org/ItemList">
+    <ul id="app-listing" itemScope itemType="http://schema.org/ItemList">
       {
         R.pipe(
           R.unless(
