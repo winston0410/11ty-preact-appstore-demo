@@ -6,7 +6,6 @@ $highlightColorTint: #CAD49D;
 $fontColorShade: #EBEBEB;
 
 body {
-  padding: 0 10%;
   background: $bgColor;
 }
 
