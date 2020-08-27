@@ -1,5 +1,7 @@
-$heading-color: #000;
-$genre-color: #777;
+$bgColor: #161612;
+$fontColor: #F5F5F5;
+$highlightColor: #99AA4B;
+$highlightColorTint: #CAD49D;
 
 #app-listing {
   list-style: none;
@@ -33,7 +35,7 @@ $genre-color: #777;
 
   h3 {
     font-size: clamp(25px, 1.5vw, 40px);
-    color: $heading-color;
+    color: $fontColor;
     margin: 0 0 10px;
 
     a {

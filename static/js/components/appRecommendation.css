@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
 
   li {
     scroll-snap-align: end;

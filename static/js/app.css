@@ -1,9 +1,23 @@
 @import "normalize.css";
+$bgColor: #161612;
+$fontColor: #F5F5F5;
+$highlightColor: #99AA4B;
+$highlightColorTint: #CAD49D;
 
-/*
 body {
   padding: 0 10%;
-} */
+  background: $bgColor;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+  color: $fontColor;
+}
+
 a {
   text-decoration: none;
+  color: $highlightColor;
+}
+
+a:hover {
+  color: $highlightColorTint
 }
