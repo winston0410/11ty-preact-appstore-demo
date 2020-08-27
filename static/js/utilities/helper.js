@@ -1,4 +1,5 @@
 import * as R from 'ramda'
+import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
 const fetchRequest = (apiUrl) => fetch(apiUrl)
   .then(response => response.json())
@@ -21,9 +22,17 @@ const checkIfDataReady = (fn) => (app) => R.pipe(
   )
 )(app)
 
+const setUpDB = async () => await openDB('app', 1, {
+  upgrade (db) {
+    db.createObjectStore('applist')
+    db.createObjectStore('app-recommendation')
+  }
+})
+
 export {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady
+  checkIfDataReady,
+  setUpDB
 }

@@ -6,7 +6,8 @@ import {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady
+  checkIfDataReady,
+  setUpDB
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import GenreList from './genreList.js'
@@ -18,11 +19,7 @@ const AppListing = (props) => {
 
   useEffect(
     async () => {
-      const appDB = await openDB('app', 1, {
-        upgrade (db) {
-          db.createObjectStore('applist')
-        }
-      })
+      const appDB = setUpDB()
 
       const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
 
@@ -33,25 +30,25 @@ const AppListing = (props) => {
         return v
       }
 
-      const shouldGetNewData = R.anyPass(
+      const lastFetchTimestamp = R.defaultTo(0)(await appDB.get('applist', 'timestamp'))
+
+      const shouldGetNewData = (timestamp) => (appData) => R.anyPass(
         [
-          R.isNil
-          // () => hasPassedADay(appDB.add('applist', Date.now(), 'timestamp'))
+          R.isNil,
+          hasPassedADay(lastFetchTimestamp)
           // Also test if page number is greater than the current number
         ]
-      )
+      )(appData)
 
-      // const response = await R.when(
-      //   shouldGetNewData,
-      //   R.pipe(
-      //     R.pipeWith(R.andThen, [
-      //       () => fetchRequest(apiUrl),
-      //       addToDB
-      //     ])
-      //   )
-      // )(await appDB.get('applist', 'applist-data'))
-
-      const response = await fetchRequest(apiUrl)
+      const response = await R.when(
+        shouldGetNewData(lastFetchTimestamp),
+        R.pipe(
+          R.pipeWith(R.andThen, [
+            () => fetchRequest(apiUrl),
+            addToDB
+          ])
+        )
+      )(await appDB.get('applist', 'applist-data'))
 
       const appIdString = await R.pipe(
         accessResults,

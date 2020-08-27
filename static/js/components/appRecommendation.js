@@ -6,7 +6,8 @@ import {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady
+  checkIfDataReady,
+  setUpDB
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import GenreList from './genreList.js'
@@ -16,11 +17,7 @@ const AppRecommendation = (props) => {
 
   useEffect(
     async () => {
-      const appDB = await openDB('app', 1, {
-        upgrade (db) {
-          db.createObjectStore('app-recommendation')
-        }
-      })
+      const appDB = setUpDB()
 
       const apiUrl = 'https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-grossing/all/10/explicit.json'
 

@@ -11,6 +11,8 @@ import {
 import './genreList.css'
 
 const GenreList = ({ data }) => {
+  console.log(data)
+
   return (
     <ul className="genre-list">
       {
