@@ -38,6 +38,10 @@ $highlightColorTint: #CAD49D;
     color: $fontColor;
     margin: 0 0 10px;
 
+    &:hover {
+      color: $highlightColor;
+    }
+
     a {
       color: inherit;
     }
