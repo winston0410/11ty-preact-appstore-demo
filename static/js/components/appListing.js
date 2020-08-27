@@ -34,28 +34,25 @@ const AppListing = (props) => {
       const lastFetchTimestamp = R.defaultTo(0)(await (await appDB).get('applist', 'timestamp'))
       const previousAppData = await (await appDB).get('applist', 'applist-data')
 
+      const getAppIdString = R.pipe(
+        accessResults,
+        R.pluck('id'),
+        R.join(',')
+      )
+
       const requestCallback = R.pipe(
         R.pipeWith(R.andThen, [
           () => fetchRequest(apiUrl),
+          getAppIdString,
+          (id) => fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${id}`),
+          R.prop('results'),
           addToDB
         ])
       )
 
       const response = shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
 
-      const appIdString = R.pipe(
-        accessResults,
-        R.pluck('id'),
-        R.join(',')
-      )(response)
-
-      const appDetails = await fetchRequest(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/hk/lookup?id=${appIdString}`)
-
-      const finalResponse = R.prop('results')(appDetails)
-
-      console.log(finalResponse)
-
-      setApp(finalResponse)
+      setApp(response)
     },
     [listingNum]
   )
