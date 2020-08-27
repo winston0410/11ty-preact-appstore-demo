@@ -22,6 +22,10 @@
     }
   }
 
+  .genre-list {
+    display: flex;
+  }
+
   h2 {
     font-size: clamp(25px, 1.5vw, 40px);
     margin: 0;
