@@ -2,6 +2,8 @@
 
 #app-listing {
   list-style: none;
+  margin: 0;
+  padding: 0;
 
   li:nth-of-type(odd) {
     img {
@@ -13,6 +15,10 @@
     img {
       border-radius: 100px;
     }
+  }
+
+  h2 {
+    font-size: 40px;
   }
 
   img {
