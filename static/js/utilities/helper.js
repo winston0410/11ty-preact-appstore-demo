@@ -1,4 +1,4 @@
-const fetchRequest = async (apiUrl) => await fetch(apiUrl)
+const fetchRequest = (apiUrl) => fetch(apiUrl)
   .then(response => response.json())
 
 export {

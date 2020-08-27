@@ -27,30 +27,25 @@ const AppListing = (props) => {
 
       const apiUrl = `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/${listingNum}/explicit.json`
 
-      let response
-
-      if (R.isNil(await appDB.get('applist', 'applist-data'))) {
-        response = await fetchRequest(apiUrl)
-        await appDB.add('applist', response, 'applist-data')
+      const addToDB = async (v) => {
+        await appDB.add('applist', v, 'applist-data')
         await appDB.add('applist', Date.now(), 'timestamp')
         await appDB.add('applist', listingNum, 'page-number')
-      } else {
-        response = await appDB.get('applist', 'applist-data')
+        return v
       }
-      //
-      // const response = await R.ifElse(
-      //   R.isNil,
-      //   R.pipeWith(R.andThen, [
-      //     dbGet,
-      //     fetchRequest(apiUrl)
-      //   ]
-      //   ),
-      //   R.pipe(
-      //     () => console.log('Not found')
-      //   )
-      // )(await appDB.get('applist', 'applist-data'))
-      //
-      // console.log(response)
+
+      const response = await R.ifElse(
+        R.isNil,
+        R.pipe(
+          R.pipeWith(R.andThen, [
+            () => fetchRequest(apiUrl),
+            addToDB
+          ])
+        ),
+        R.pipe(
+          R.tap(console.log)
+        )
+      )(await appDB.get('applist', 'applist-data'))
 
       const appIdString = await R.pipe(
         accessResults,
