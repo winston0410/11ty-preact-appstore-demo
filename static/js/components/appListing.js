@@ -86,9 +86,9 @@ const AppListing = (props) => {
         <img itemProp="image" src={artworkUrl512} alt={trackCensoredName} loading="lazy" />
       </a>
       <section className="app-info">
-        <h2>
+        <h3>
           <a href={trackViewUrl}>{trackCensoredName}</a>
-        </h2>
+        </h3>
         <GenreList data={genres}/>
         <div>
           <a href={artistViewUrl} itemProp="name">{artistName}</a>

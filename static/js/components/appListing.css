@@ -26,7 +26,7 @@ $genre-color: #777;
     }
   }
 
-  h2 {
+  h3 {
     font-size: clamp(25px, 1.5vw, 40px);
     color: $heading-color;
     margin: 0 0 10px;
