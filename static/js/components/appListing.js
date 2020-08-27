@@ -105,12 +105,7 @@ const AppListing = (props) => {
   return (
     <ul id="app-listing" itemScope itemType="http://schema.org/ItemList">
       {
-        R.pipe(
-          R.unless(
-            R.isNil,
-            R.map(renderResult)
-          )
-        )(app)
+        checkIfDataReady(renderResult)(app)
       }
     </ul>
   )
