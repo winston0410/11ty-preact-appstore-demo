@@ -49,9 +49,9 @@ const AppRecommendation = (props) => {
         <img itemProp="image" src={artworkUrl100} alt={name} loading="lazy" />
       </a>
       <section className="app-info">
-        <h2>
+        <h3>
           <a href={url}>{name}</a>
-        </h2>
+        </h3>
         <GenreList data={genres}/>
         <div>
           <a href={artistUrl} itemProp="name">{artistName}</a>
