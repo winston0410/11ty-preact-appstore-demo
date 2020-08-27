@@ -6,7 +6,8 @@ import {
   fetchRequest,
   hasPassedADay,
   accessResults,
-  checkIfDataReady
+  checkIfDataReady,
+  renderGenreList
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
@@ -32,9 +33,30 @@ const AppRecommendation = (props) => {
     []
   )
 
+  const renderResult = ({ name, url, genres, artistName, artistUrl, artworkUrl100 }) => (
+    <li itemProp="itemListElement" itemScope itemType="http://schema.org/MobileApplication">
+      <a href={url}>
+        <img itemProp="image" src={artworkUrl100} alt={name} loading="lazy" />
+      </a>
+      <section className="app-info">
+        <h2>
+          <a href={url}>{name}</a>
+        </h2>
+        {
+          renderGenreList(genres)
+        }
+        <div>
+          <a href={artistUrl} itemProp="name">{artistName}</a>
+        </div>
+      </section>
+    </li>
+  )
+
   return (
     <ul id="app-recommendation" itemScope itemType="http://schema.org/ItemList">
-
+      {
+        checkIfDataReady(renderResult)(app)
+      }
     </ul>
   )
 }
