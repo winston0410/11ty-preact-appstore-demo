@@ -9,7 +9,13 @@ const hasPassedADay = R.pipe(
   R.lt(86400000)
 )
 
+const accessResults = R.pipe(
+  R.prop('feed'),
+  R.prop('results')
+)
+
 export {
   fetchRequest,
-  hasPassedADay
+  hasPassedADay,
+  accessResults
 }

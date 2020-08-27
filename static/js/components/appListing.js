@@ -4,7 +4,8 @@ import * as R from 'ramda'
 import './appListing.css'
 import {
   fetchRequest,
-  hasPassedADay
+  hasPassedADay,
+  accessResults
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
@@ -12,11 +13,6 @@ const AppListing = (props) => {
   const [app, setApp] = useState([])
 
   const [listingNum, setListingNum] = useState(10)
-
-  const accessResults = R.pipe(
-    R.prop('feed'),
-    R.prop('results')
-  )
 
   useEffect(
     async () => {

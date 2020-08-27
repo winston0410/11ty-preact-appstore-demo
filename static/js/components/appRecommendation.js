@@ -4,17 +4,13 @@ import './appListing.css'
 import * as R from 'ramda'
 import {
   fetchRequest,
-  hasPassedADay
+  hasPassedADay,
+  accessResults
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
 const AppRecommendation = (props) => {
   const [app, setApp] = useState([])
-
-  const accessResults = R.pipe(
-    R.prop('feed'),
-    R.prop('results')
-  )
 
   useEffect(
     async () => {
