@@ -3,7 +3,7 @@ $genre-color: #777;
 
 #app-listing {
   list-style: none;
-  margin: 0;
+  margin: 0 0 30px;
   padding: 0;
   display: grid;
   grid-row-gap: 10px;
@@ -29,6 +29,7 @@ $genre-color: #777;
   h2 {
     font-size: clamp(25px, 1.5vw, 40px);
     color: $heading-color;
+    margin: 0 0 10px;
   }
 
   img {
