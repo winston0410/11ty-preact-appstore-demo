@@ -39,6 +39,12 @@ const AppListing = (props) => {
     []
   )
 
+  const renderGenres = (genre) => (
+    <li>
+      {genre}
+    </li>
+  )
+
   const renderResult = ({ trackCensoredName, trackViewUrl, genres, artistName, artistViewUrl, artworkUrl512, averageUserRating }) => (
     <li>
       <a href={trackViewUrl}>
@@ -48,6 +54,11 @@ const AppListing = (props) => {
         <h2>
           <a href={trackViewUrl}>{trackCensoredName}</a>
         </h2>
+        <ul className="genre-list">
+          {
+            R.map(renderGenres)(genres)
+          }
+        </ul>
         <div>
           <a href={artistViewUrl}>{artistName}</a>
         </div>
