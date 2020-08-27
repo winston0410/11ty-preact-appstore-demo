@@ -34,16 +34,13 @@ const AppListing = (props) => {
         return v
       }
 
-      const response = await R.ifElse(
+      const response = await R.when(
         R.isNil,
         R.pipe(
           R.pipeWith(R.andThen, [
             () => fetchRequest(apiUrl),
             addToDB
           ])
-        ),
-        R.pipe(
-          R.tap(console.log)
         )
       )(await appDB.get('applist', 'applist-data'))
 
