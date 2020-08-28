@@ -50,10 +50,10 @@ const AppListing = (props) => {
       const response = await shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
 
       const paginatedResponse = R.pipe(
-        R.slice(0, addTen(paginationNum))
+        R.slice(paginationNum, addTen(paginationNum))
       )(response)
 
-      await setApp(paginatedResponse)
+      await setApp([...app, ...paginatedResponse])
     },
     [paginationNum]
   )
@@ -62,11 +62,12 @@ const AppListing = (props) => {
     (event) => {
       if (window.scrollY > half(document.body.scrollHeight)) {
         const newPaginationNum = R.add(10)(paginationNum)
-
         console.log(newPaginationNum)
         setPaginationNum(newPaginationNum)
         console.log('Scrolled 50%')
       }
+
+      // window.removeEventListener('scroll', updatePaginationNumberOnScroll)
     },
     500)
 
