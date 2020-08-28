@@ -1,5 +1,5 @@
 const htmlmin = require("html-minifier");
-const pluginPWA = require("eleventy-plugin-pwa");
+// const pluginPWA = require("eleventy-plugin-pwa");
 
 module.exports = (eleventyConfig) => {
 
@@ -15,40 +15,39 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addPairedNunjucksAsyncShortcode("postcss", require("./utils/transform-css"));
 
-  eleventyConfig.addPlugin(pluginPWA, {
-  swSrc: "./static/js/service-worker/sw.js"
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/workbox-sw/build/workbox-sw.js': './static/js/service-worker/workbox-sw.js'
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/workbox-routing/build/workbox-routing.prod.js': './static/js/service-worker/workbox-routing.prod.js'
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/workbox-precaching/build/workbox-precaching.prod.js': './static/js/service-worker/workbox-precaching.prod.js'
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/workbox-core/build/workbox-core.prod.js': './static/js/service-worker/workbox-core.prod.js'
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/workbox-google-analytics/build/workbox-offline-ga.prod.js': './static/js/service-worker/workbox-offline-ga.prod.js'
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/workbox-background-sync/build/workbox-background-sync.prod.js': './static/js/service-worker/workbox-background-sync.prod.js'
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/workbox-strategies/build/workbox-strategies.prod.js': './static/js/service-worker/workbox-strategies.prod.js'
-  });
+  // eleventyConfig.addPlugin(pluginPWA, {
+  // swSrc: "./static/js/service-worker/sw.js"
+  // });
+  //
+  // eleventyConfig.addPassthroughCopy({
+  //   './node_modules/workbox-sw/build/workbox-sw.js': './static/js/service-worker/workbox-sw.js'
+  // });
+  //
+  // eleventyConfig.addPassthroughCopy({
+  //   './node_modules/workbox-routing/build/workbox-routing.prod.js': './static/js/service-worker/workbox-routing.prod.js'
+  // });
+  //
+  // eleventyConfig.addPassthroughCopy({
+  //   './node_modules/workbox-precaching/build/workbox-precaching.prod.js': './static/js/service-worker/workbox-precaching.prod.js'
+  // });
+  //
+  // eleventyConfig.addPassthroughCopy({
+  //   './node_modules/workbox-core/build/workbox-core.prod.js': './static/js/service-worker/workbox-core.prod.js'
+  // });
+  //
+  // eleventyConfig.addPassthroughCopy({
+  //   './node_modules/workbox-google-analytics/build/workbox-offline-ga.prod.js': './static/js/service-worker/workbox-offline-ga.prod.js'
+  // });
+  //
+  // eleventyConfig.addPassthroughCopy({
+  //   './node_modules/workbox-background-sync/build/workbox-background-sync.prod.js': './static/js/service-worker/workbox-background-sync.prod.js'
+  // });
+  //
+  // eleventyConfig.addPassthroughCopy({
+  //   './node_modules/workbox-strategies/build/workbox-strategies.prod.js': './static/js/service-worker/workbox-strategies.prod.js'
+  // });
 
   eleventyConfig.setBrowserSyncConfig({
-    // scripts in body conflict with Turbolinks
     snippetOptions: {
       rule: {
         match: /<\/head>/i,
