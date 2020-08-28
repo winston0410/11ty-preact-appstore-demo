@@ -11,7 +11,9 @@ import {
   shouldSendRequest,
   debounce,
   hasScrolledHalfPage,
-  half
+  half,
+  getAppIdString,
+  addTen
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import GenreList from './genreList.js'
@@ -35,12 +37,6 @@ const AppListing = (props) => {
       const lastFetchTimestamp = R.defaultTo(0)(await (await appDB).get('applist', 'timestamp'))
       const previousAppData = await (await appDB).get('applist', 'applist-data')
 
-      const getAppIdString = R.pipe(
-        accessResults,
-        R.pluck('id'),
-        R.join(',')
-      )
-
       const requestCallback = R.pipe(
         R.pipeWith(R.andThen, [
           async () => await fetchRequest(apiUrl),
@@ -52,8 +48,6 @@ const AppListing = (props) => {
       )
 
       const response = await shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
-
-      const addTen = R.add(10)
 
       const paginatedResponse = R.pipe(
         R.slice(paginationNum, addTen(paginationNum))

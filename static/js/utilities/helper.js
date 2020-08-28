@@ -56,6 +56,14 @@ const hasScrolledHalfPage = R.when(
   (v) => R.gte(v, half(document.body.scrollHeight))
 )(window.scrollY)
 
+const getAppIdString = R.pipe(
+  accessResults,
+  R.pluck('id'),
+  R.join(',')
+)
+
+const addTen = R.add(10)
+
 export {
   fetchRequest,
   hasPassedADay,
@@ -65,5 +73,7 @@ export {
   shouldSendRequest,
   debounce,
   hasScrolledHalfPage,
-  half
+  half,
+  getAppIdString,
+  addTen
 }
