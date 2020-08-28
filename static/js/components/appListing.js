@@ -9,7 +9,7 @@ import {
   checkIfDataReady,
   setUpDB,
   shouldSendRequest,
-  debounce_,
+  debounce,
   hasScrolledHalfPage,
   half
 } from '../utilities/helper.js'
@@ -64,17 +64,19 @@ const AppListing = (props) => {
     [paginationNum]
   )
 
+  const updatePaginationNumberOnScroll = debounce(
+    (event) => {
+      if (window.scrollY > half(document.body.scrollHeight)) {
+        const newPaginationNum = R.add(10)(paginationNum)
+        setPaginationNum(newPaginationNum)
+        console.log('Scrolled 50%')
+      }
+    },
+    500)
+
   useEffect(
     () => {
-      window.addEventListener(
-        'scroll', () => debounce_(false, 500, (event) => {
-          if (window.scrollY > half(document.body.scrollHeight)) {
-            const newPaginationNum = R.add(10)(paginationNum)
-            setPaginationNum(newPaginationNum)
-            console.log('Scrolled 50%')
-          }
-        })()()
-      )
+      window.addEventListener('scroll', updatePaginationNumberOnScroll)
     },
     []
   )

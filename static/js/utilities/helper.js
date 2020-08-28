@@ -1,31 +1,15 @@
 import * as R from 'ramda'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
-// Credit: https://gist.github.com/tommmyy/daf61103d6022cd23d74c71b0e8adc0d
-const debounce_ = R.curry((immediate, timeMs, fn) => () => {
+// Credit: https://chrisboakes.com/how-a-javascript-debounce-function-works/
+function debounce (callback, wait) {
   let timeout
-
   return (...args) => {
-    const later = () => {
-      timeout = null
-
-      if (!immediate) {
-        R.apply(fn, args)
-      }
-    }
-
-    const callNow = immediate && !timeout
-
+    const context = this
     clearTimeout(timeout)
-    timeout = setTimeout(later, timeMs)
-
-    if (callNow) {
-      R.apply(fn, args)
-    }
-
-    return timeout
+    timeout = setTimeout(() => callback.apply(context, args), wait)
   }
-})
+}
 
 const fetchRequest = (apiUrl) => fetch(apiUrl)
   .then(response => response.json())
@@ -79,7 +63,7 @@ export {
   checkIfDataReady,
   setUpDB,
   shouldSendRequest,
-  debounce_,
+  debounce,
   hasScrolledHalfPage,
   half
 }
