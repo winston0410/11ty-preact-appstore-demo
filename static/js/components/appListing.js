@@ -18,7 +18,7 @@ import GenreList from './genreList.js'
 
 const AppListing = (props) => {
   const [app, setApp] = useState([])
-  const [paginationNum, setPaginationNum] = useState(10)
+  const [paginationNum, setPaginationNum] = useState(0)
 
   useEffect(
     async () => {
@@ -53,7 +53,13 @@ const AppListing = (props) => {
 
       const response = await shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
 
-      await setApp(response)
+      const addTen = R.add(10)
+
+      const paginatedResponse = R.pipe(
+        R.slice(paginationNum, addTen(paginationNum))
+      )(response)
+
+      await setApp(paginatedResponse)
     },
     [paginationNum]
   )
