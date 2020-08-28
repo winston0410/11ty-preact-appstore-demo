@@ -1,7 +1,7 @@
 $fontColorShade: #EBEBEB;
 
 .genre-list {
-  margin: 0;
+  margin: 0 0 5px;
   padding: 0;
   display: flex;
 
