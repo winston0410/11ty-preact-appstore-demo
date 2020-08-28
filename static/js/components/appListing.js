@@ -67,7 +67,7 @@ const AppListing = (props) => {
         console.log('Scrolled 50%')
       }
 
-      // window.removeEventListener('scroll', updatePaginationNumberOnScroll)
+      window.removeEventListener('scroll', updatePaginationNumberOnScroll)
     },
     500)
 
