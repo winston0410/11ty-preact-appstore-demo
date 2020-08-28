@@ -52,7 +52,6 @@ const AppRecommendation = (props) => {
         <h3>
           <a href={url}>{name}</a>
         </h3>
-        <GenreList data={genres}/>
         <div>
           <a href={artistUrl} itemProp="name">{artistName}</a>
         </div>
