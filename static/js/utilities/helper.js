@@ -69,8 +69,8 @@ const shouldSendRequest = (timestamp) => (callback) => (appData) => R.when(
 const half = R.divide(R.__, 2)
 
 const hasScrolledHalfPage = R.when(
-  R.gte(R.__, half(document.body.scrollHeight))
-)
+  (v) => R.gte(v, half(document.body.scrollHeight))
+)(window.scrollY)
 
 export {
   fetchRequest,
@@ -80,5 +80,6 @@ export {
   setUpDB,
   shouldSendRequest,
   debounce_,
-  hasScrolledHalfPage
+  hasScrolledHalfPage,
+  half
 }

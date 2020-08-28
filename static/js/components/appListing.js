@@ -10,7 +10,8 @@ import {
   setUpDB,
   shouldSendRequest,
   debounce_,
-  hasScrolledHalfPage
+  hasScrolledHalfPage,
+  half
 } from '../utilities/helper.js'
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import GenreList from './genreList.js'
@@ -61,7 +62,9 @@ const AppListing = (props) => {
     () => {
       window.addEventListener(
         'scroll', () => debounce_(false, 500, (event) => {
-          console.log('Scrollbar running')
+          if (window.scrollY > half(document.body.scrollHeight)) {
+            console.log('Scrolled 50%')
+          }
         })()()
       )
     },
