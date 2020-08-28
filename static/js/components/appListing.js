@@ -63,6 +63,8 @@ const AppListing = (props) => {
       window.addEventListener(
         'scroll', () => debounce_(false, 500, (event) => {
           if (window.scrollY > half(document.body.scrollHeight)) {
+            const newPaginationNum = R.add(10)(paginationNum)
+            setPaginationNum(newPaginationNum)
             console.log('Scrolled 50%')
           }
         })()()
