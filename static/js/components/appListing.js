@@ -50,7 +50,7 @@ const AppListing = (props) => {
       const response = await shouldSendRequest(lastFetchTimestamp)(requestCallback)(previousAppData)
 
       const paginatedResponse = R.pipe(
-        R.slice(paginationNum, addTen(paginationNum))
+        R.slice(0, addTen(paginationNum))
       )(response)
 
       await setApp(paginatedResponse)
@@ -62,6 +62,8 @@ const AppListing = (props) => {
     (event) => {
       if (window.scrollY > half(document.body.scrollHeight)) {
         const newPaginationNum = R.add(10)(paginationNum)
+
+        console.log(newPaginationNum)
         setPaginationNum(newPaginationNum)
         console.log('Scrolled 50%')
       }
@@ -72,7 +74,7 @@ const AppListing = (props) => {
     () => {
       window.addEventListener('scroll', updatePaginationNumberOnScroll)
     },
-    []
+    [paginationNum]
   )
 
   const renderResult = ({ trackCensoredName, trackViewUrl, genres, artistName, artistViewUrl, artworkUrl512, averageUserRating }) => (
