@@ -17,15 +17,15 @@ export default [{
     dir: 'dist',
     format: 'esm',
     plugins: [
-      // terser({
-      //   compress: {
-      //     drop_console: true
-      //   },
-      //   output: {
-      //     comments: false
-      //   },
-      //   ecma: 2019
-      // })
+      terser({
+        compress: {
+          drop_console: true
+        },
+        output: {
+          comments: false
+        },
+        ecma: 2019
+      })
     ]
   }],
   plugins: [
