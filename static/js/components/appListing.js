@@ -75,14 +75,6 @@ const AppListing = (props) => {
     []
   )
 
-  // const checkScrollPosition = () => {
-  //   const addTen = R.add(10)
-  //
-  //   const newListingNum = addTen(listingNum)
-  //
-  //   setListingNum(newListingNum)
-  // }
-
   const renderResult = ({ trackCensoredName, trackViewUrl, genres, artistName, artistViewUrl, artworkUrl512, averageUserRating }) => (
     <li itemProp="itemListElement" itemScope itemType="http://schema.org/MobileApplication">
       <a href={trackViewUrl}>
