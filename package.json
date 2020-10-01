@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "idb": "^5.0.4",
+    "idb": "^5.0.5",
     "normalize.css": "^8.0.1",
     "preact": "^10.4.7"
   },
